@@ -19,8 +19,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh '''
-                    sudo cp target/ROOT.war /var/lib/tomcat10/webapps/
-                    sudo systemctl restart tomcat10
+                    cp target/ROOT.war /var/lib/tomcat10/webapps/
+                    systemctl restart tomcat10
                 '''
             }
         }
