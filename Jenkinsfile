@@ -19,9 +19,9 @@ pipeline {
         stage('Deploy to Apache') {
             steps {
                 sh '''
-                    sudo rm -rf /var/www/html/*
-                    sudo cp -r target/ROOT/* /var/www/html/
-                    sudo systemctl restart apache2
+                    rm -rf /var/www/html/*
+                    cp -r target/ROOT/* /var/www/html/
+                    systemctl restart apache2
                 '''
             }
         }
