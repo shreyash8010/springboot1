@@ -16,11 +16,12 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
+        stage('Deploy to Apache') {
             steps {
                 sh '''
-                    cp target/ROOT.war /var/lib/tomcat10/webapps/
-                    systemctl restart tomcat10
+                    sudo rm -rf /var/www/html/*
+                    sudo cp -r target/ROOT/* /var/www/html/
+                    sudo systemctl restart apache2
                 '''
             }
         }
