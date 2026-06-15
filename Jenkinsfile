@@ -19,11 +19,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh '''
-                    echo "Deploying Spring Boot application..."
-
-                    pkill -f springboot1 || true
-
-                    nohup java -jar target/*.jar > app.log 2>&1 &
+                    sudo cp target/ROOT.war /var/lib/tomcat10/webapps/
+                    sudo systemctl restart tomcat10
                 '''
             }
         }
